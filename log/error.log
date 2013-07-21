@@ -1,0 +1,62 @@
+[15/Jul/2013:22:25:25 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:25:29 -0500] During processing of request from 127.0.0.1:55402
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55402\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+thumbs: getDirectoryContents: does not exist (No such file or directory)
+[15/Jul/2013:22:26:22 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55402
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55402\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+send: resource vanished (Connection reset by peer)
+[15/Jul/2013:22:26:22 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55402
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55402\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+ExceptionAlreadyCaught
+[15/Jul/2013:22:26:25 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:26:25 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:22:26:42 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:28:03 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55415
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55415\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+send: resource vanished (Connection reset by peer)
+[15/Jul/2013:22:28:03 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55415
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55415\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+ExceptionAlreadyCaught
+[15/Jul/2013:22:28:06 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:28:06 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:22:31:32 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:33:17 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55502
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55502\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+thread killed
+[15/Jul/2013:22:33:17 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:55502
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55502\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: \n    contextpath: /\n    URI: /\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+ExceptionAlreadyCaught
+[15/Jul/2013:22:35:15 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:35:15 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:22:35:25 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:36:35 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:36:35 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:22:37:06 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:37:28 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:37:28 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:22:39:46 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:22:40:09 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:22:40:09 -0500] Server.httpServe: BACKEND STOPPED
+[15/Jul/2013:23:25:22 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[15/Jul/2013:23:26:25 -0500] Server.httpServe: SHUTDOWN
+[15/Jul/2013:23:26:25 -0500] Server.httpServe: BACKEND STOPPED

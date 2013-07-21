@@ -1,0 +1,20 @@
+
+h2 {
+   Color: #00FF00;
+}
+
+div.gridContainer {
+   width: 700px;
+}
+
+div.tile {
+   width: 100px;
+   height: 100px;
+}
+
+img.imgTile {
+   width: 100%;
+   max-height: 100%;
+}
+
+
