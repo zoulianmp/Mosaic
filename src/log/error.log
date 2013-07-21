@@ -383,3 +383,11 @@ ExceptionAlreadyCaught
 [20/Jul/2013:21:56:42 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
 [20/Jul/2013:22:02:37 -0500] Server.httpServe: SHUTDOWN
 [20/Jul/2013:22:02:37 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:15:25:18 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:15:33:24 -0500] During processing of request from 127.0.0.1:36994
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:36994\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/YOxyU7h.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[21/Jul/2013:16:30:48 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:16:30:48 -0500] Server.httpServe: BACKEND STOPPED

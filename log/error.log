@@ -60,3 +60,11 @@ ExceptionAlreadyCaught
 [15/Jul/2013:23:25:22 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
 [15/Jul/2013:23:26:25 -0500] Server.httpServe: SHUTDOWN
 [15/Jul/2013:23:26:25 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:16:34:39 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:16:35:00 -0500] During processing of request from 127.0.0.1:38761
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:38761\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/rRkuP4B.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+SqlError {seState = "", seNativeError = 1, seErrorMsg = "prepare 136: SELECT *, MIN( (Red - 195)*(Red - 195) + (Green - 221)*(Green - 221) + (Blue - 242)*(Blue - 242))AS Dist FROM Images ORDER BY Dist DESC: no such table: Images"}
+[21/Jul/2013:16:41:55 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:16:41:55 -0500] Server.httpServe: BACKEND STOPPED

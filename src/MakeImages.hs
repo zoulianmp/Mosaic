@@ -1,12 +1,13 @@
 
-
-module MakeImages where
+module Main where
 
 import Codec.Picture
 import Codec.Picture.Types
 
 import DataAccess
 import Mosaic
+
+main = loop 0 0 0
 
 loop :: Int -> Int -> Int -> IO ()
 loop r g b
@@ -28,14 +29,12 @@ mkPngTile :: Int -> PixelRGB8 -> String -> IO ()
 mkPngTile sz col name = do
    let img = generateImage (\_ _ -> col) sz sz
    let path = "tiles/" ++ name
-   putStrLn $ "test"
    savePngImage path (ImageRGB8 img)
    id <- insert (ImageRow
                   path
                   path
                   (PhotoVal col)
                   "")
-   putStrLn $ show id
    return ()
 
 

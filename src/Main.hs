@@ -23,6 +23,7 @@ import qualified Text.Blaze.Html5.Attributes as A
 import qualified Data.ByteString as B
 
 import           Mosaic
+import           DataAccess
 
 toBS str = B.pack $ map (fromIntegral . ord) str
 
@@ -73,7 +74,7 @@ addedHandler :: Snap ()
 addedHandler = method POST setter
    where setter = do
             url <- getParam "photoUrl"
-      
+
             case url of
                Nothing  -> writeBS "No Url"
                Just u   -> do
@@ -81,7 +82,15 @@ addedHandler = method POST setter
                   case res of
                      Left err -> writeBS err
                      Right r  -> do
-                        writeBS $ toBS r
+                        dyn <- liftIO $ readImage r
+                        case dyn of
+                           Left er  -> writeBS $ toBS er
+                           Right dy -> do
+                              let rgb8 = rgb8Image dy
+                                  pixs = concat $ scaleAvgPixs rgb8 50
+                              paths <- liftIO $ mapM getClosestColor pixs
+
+                              blaze (homePage (map tileImage paths) 50)
 
 getFile :: HStream a => String -> IO (Maybe a)
 getFile url = do
@@ -102,13 +111,13 @@ isImageExt _         = False
 downloadImage :: String -> IO (Either B.ByteString FilePath)
 downloadImage url = do
    let ext = takeExtension url
-   
+
    case isImageExt ext  of
       False -> return (Left "Not supported image type")
       True  -> do
 
          file  <- getFile url
-         
+
          case file of
             Nothing -> return
                (Left "Could not download the file from specified url")
