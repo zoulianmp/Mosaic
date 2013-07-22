@@ -9,6 +9,7 @@ import           System.FilePath
 import           Codec.Picture
 import           Network.HTTP hiding (GET,POST)
 import           Network.URI (parseURI)
+import           Data.List (intersperse)
 
 import           Control.Monad
 import           Control.Monad.IO.Class
@@ -17,21 +18,47 @@ import           Snap.Core
 import           Snap.Util.FileServe
 import           Snap.Http.Server
 import           Snap.Blaze
-import           Text.Blaze.Html5 hiding (map)
-import           Text.Blaze.Html5.Attributes hiding (dir, method, form)
+import           Text.Blaze.Html (Html)
+import qualified Text.Blaze.Html5 as B
 import qualified Text.Blaze.Html5.Attributes as A
-import qualified Data.ByteString as B
+import qualified Data.ByteString as BS
 
 import           Mosaic
 import           DataAccess
 
-toBS str = B.pack $ map (fromIntegral . ord) str
+commaSeparated :: [String] -> String
+commaSeparated []       = []
+commaSeparated [x]      = x
+commaSeparated (x:xs)   = x ++ "," ++ (commaSeparated xs)
+
+fromCS :: String -> [String]
+fromCS str
+   | null l       = [f]
+   | otherwise    = f : fromCS l
+      where (f,l) = splACom str []
+
+splACom :: String -> String -> (String, String)
+splACom [] acc    = (reverse acc,[])
+splACom (s:ss) acc
+            | s == ','     = (reverse acc,ss)
+            | otherwise    = splACom ss  (s : acc)
+
+readMaybe :: (Read a) => String -> Maybe a
+readMaybe s = case reads s of
+                  [(x,"")] -> Just x
+                  _        -> Nothing
+
+toBS :: String -> BS.ByteString
+toBS str = BS.pack $ map (fromIntegral . ord) str
+
+fromBS :: BS.ByteString -> String
+fromBS bs = map (chr . fromIntegral) (BS.unpack bs)
 
 emptyHtml :: Html
 emptyHtml = htmlStr ""
 
 htmlStr :: String -> Html
-htmlStr = toHtml
+htmlStr = B.toHtml
 
 main :: IO ()
 main = quickHttpServe site
@@ -42,8 +69,8 @@ site =
     <|>
     route [ ("addphoto", addPhotoHandler)
           , ("added", addedHandler)
+          , ("photo/:photoind", photoHandler)
           , ("about", writeBS "about")
-          , ("echo/:echoparam", echoHandler)
           , ("", serveDirectory "")
           ]
     <|>
@@ -51,9 +78,33 @@ site =
 
 echoHandler :: Snap ()
 echoHandler = do
-    param <- getParam "echoparam"
+    par <- getParam "echoparam"
     maybe (writeBS "must specify echo/param in URL")
-          writeBS param
+          writeBS par
+
+photoHandler :: Snap ()
+photoHandler = do
+   par <- getParam "photoind"
+   case par of
+      Nothing -> writeBS "Must specific photo index"
+      Just id -> do
+         case readMaybe (fromBS id) of
+            Nothing -> writeBS "Could not parse id"
+            Just i  -> do
+               fPath <- liftIO $ getById i
+               case fPath of
+                  Nothing -> writeBS "Not in Database"
+                  Just a  -> do
+                     if ((not . null) (mosaicIds a))
+                     then do
+                        let fpaths = fromCS (mosaicIds a)
+                        blaze $ homePage (map ("../"++) fpaths) 50
+                     else do
+                        (blaze .  wrapper . singleImage . ("../" ++) . fullImage) a
+
+singleImage :: FilePath -> Html
+singleImage path = do
+   B.img B.! A.src (fromString path)
 
 homePageHandler :: Snap ()
 homePageHandler = method GET getter
@@ -62,7 +113,7 @@ homePageHandler = method GET getter
             case dyn of
                Left  _     -> writeBS "fuck"
                Right image -> do
-                  let arr = scaleMosic ((\(ImageRGB8 img) -> img) image) 50
+                  let arr = scaleMosic ((\(ImageRGB8 i) -> i) image) 50
                   blaze $ homePage (concat arr) 50
 
 addPhotoHandler :: Snap ()
@@ -78,19 +129,37 @@ addedHandler = method POST setter
             case url of
                Nothing  -> writeBS "No Url"
                Just u   -> do
-                  res <- liftIO $ downloadImage (map (chr . fromIntegral) (B.unpack u))
+                  -- download image off web
+                  res <- liftIO $ downloadImage (fromBS u)
                   case res of
                      Left err -> writeBS err
                      Right r  -> do
+                        -- readimage from drive
                         dyn <- liftIO $ readImage r
                         case dyn of
                            Left er  -> writeBS $ toBS er
                            Right dy -> do
-                              let rgb8 = rgb8Image dy
-                                  pixs = concat $ scaleAvgPixs rgb8 50
-                              paths <- liftIO $ mapM getClosestColor pixs
+                              -- get the mosaic
+                              let !rgb8 = rgb8Image dy
+                                  !pixs = concat $ scaleAvgPixs rgb8 50
+                                  !fullP = "images/" ++ (takeFileName (fromBS u))
+                                  !tileP = "tiles/" ++ (takeFileName (fromBS u))
+                                  (!sqrImage, !pVal) = prepareForDB (ImageRGB8 rgb8)
 
-                              blaze (homePage (map tileImage paths) 50)
+
+                              -- rewrite image to drive
+                              dbEntries <- liftIO $ mapM getClosestColor pixs
+                              let !fpaths  = map tileImage dbEntries
+                                  !newEntry = ImageRow fullP tileP pVal
+                                                 (commaSeparated fpaths)
+
+                              liftIO $ savePngImage fullP (ImageRGB8 rgb8)
+                              liftIO $ savePngImage tileP (ImageRGB8 sqrImage)
+                              newId <- liftIO $ insert newEntry
+
+                              redirect (toBS ("photo/" ++ show newId))
+                              -- blaze (homePage (map tileImage dbEntries) 50)
+
 
 getFile :: HStream a => String -> IO (Maybe a)
 getFile url = do
@@ -108,7 +177,7 @@ isImageExt _         = False
 
 -- tries to download the image given by the url if fails returns the error
 -- on the left, success, filepath on the right
-downloadImage :: String -> IO (Either B.ByteString FilePath)
+downloadImage :: String -> IO (Either BS.ByteString FilePath)
 downloadImage url = do
    let ext = takeExtension url
 
@@ -122,73 +191,74 @@ downloadImage url = do
             Nothing -> return
                (Left "Could not download the file from specified url")
             Just f  -> do
-               let fname = "temp" ++ (takeExtension url)
-               B.writeFile fname f
-               return (Right fname)
+               let f_name = "temp" ++ (takeExtension url)
+               BS.writeFile f_name f
+               return (Right f_name)
 
 addPhotoPage :: Html
 addPhotoPage = do
 
    wrapper $ do
 
-      form ! name "addphoto" ! action "added" ! A.method "post" $ do
+      B.form B.! A.name "addphoto" B.! A.action "added" B.! A.method "post" $ do
          htmlStr "Image Url"
-         input ! type_ "url" ! name "photoUrl"
-         input ! type_ "submit" ! value "Add"
+         B.input B.! A.type_ "url" B.! A.name "photoUrl"
+         B.input B.! A.type_ "submit" B.! A.value "Add"
 
 
 navBar :: Html
 navBar = do
-   div ! class_ "navBar" $ do
+   B.div B.! A.class_ "navBar" $ do
 
-      div ! class_ "innerNav" $ do
+      B.div B.! A.class_ "innerNav" $ do
 
-         a ! href "/addphoto" $ htmlStr "Add Your Own Photo"
+         B.a B.! A.href "/addphoto" $ htmlStr "Add Your Own Photo"
 
-         a ! href "/about" $ htmlStr "About"
+         B.a B.! A.href "/about" $ htmlStr "About"
 
 wrapper :: Html -> Html
 wrapper inner = do
-   docType
-   head $ do
-      link ! rel "stylesheet" ! type_ "text/css" ! href "Site.css"
+   B.docType
+   B.head $ do
+      B.link B.! A.rel "stylesheet" B.! A.type_ "text/css" B.! A.href "Site.css"
+      B.link B.! A.rel "stylesheet" B.! A.type_ "text/css" B.! A.href "../Site.css" -- BAAD, change
 
-   body $ do
+   B.body $ do
 
       navBar
 
       inner
 
 homePage :: [FilePath] -> Int -> Html
-homePage photoNames cols = do
+homePage photoNames columns = do
 
    wrapper $ do
 
-      div ! class_ "gridContainer" $ do
-         pictureTable photoNames cols
+      B.div B.! A.class_ "gridContainer" $ do
+         pictureTable photoNames columns
 
 
 pictureTable :: [FilePath] -> Int -> Html
-pictureTable paths col = do
-   table $ do
-      picTable paths col
+pictureTable paths column = do
+   B.table $ do
+      picTable paths column
          where picTable _     0   = emptyHtml
                picTable [] _      = emptyHtml
-               picTable paths col = do
-                  let (row,remains) = splitAt col paths
-                  pictureRow row col
-                  picTable remains col
+               picTable paths column = do
+                  let (row,remains) = splitAt column paths
+                  pictureRow row column
+                  picTable remains column
 
 pictureRow :: [FilePath] -> Int -> Html
 pictureRow paths cols = do
-   tr $ do
+   B.tr $ do
       picRow paths cols
          where picRow _          0   = emptyHtml
                picRow [] _           = emptyHtml
                picRow (p:paths) cols = do
-                  td $ do
-                     div ! class_ "tile" $ do
-                        img ! src (fromString p)
+                  B.td $ do
+                     B.div B.! A.class_ "tile" $ do
+                        B.img B.! A.src (fromString p)
 
                   picRow paths (cols-1)
 

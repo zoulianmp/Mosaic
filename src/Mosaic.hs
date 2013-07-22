@@ -4,6 +4,7 @@ module Mosaic where
 import           System.Directory
 import           System.FilePath
 import           Control.Monad
+import           Data.List
 
 import           Data.Word
 import           Codec.Picture
@@ -19,7 +20,7 @@ import qualified Data.Vector.Storable as V
 
 type RCord = (Rational, Rational)
 
-data PhotoVal = PhotoVal PixelRGB8 deriving (Show)
+data PhotoVal = PhotoVal !PixelRGB8 deriving (Show)
 
 -- Remove later
 right (Left _) = error " not right"
@@ -131,7 +132,7 @@ imageType :: DynamicImage -> String
 imageType dyImage = case dyImage of
    ImageY8     img      -> "Y8"
    ImageY16    img      -> "Y16"
-   ImageYF     img      -> "F" 
+   ImageYF     img      -> "F"
    ImageYA8    img      -> "not"
    ImageYA16   img      -> "not"
    ImageRGB8   img      -> "yes"
@@ -155,23 +156,23 @@ rgb8Image dyImage = case dyImage of
    ImageRGB8   img      -> img
    ImageRGB16  img      -> pixelMap (\(PixelRGB16 r g b) -> PixelRGB8
                                        (fromIntegral (r`div`2))
-                                       (fromIntegral (r`div`2))
-                                       (fromIntegral (r`div`2))) img
+                                       (fromIntegral (g`div`2))
+                                       (fromIntegral (b`div`2))) img
    ImageRGBF   img      -> pixelMap (\(PixelRGBF r g b) -> PixelRGB8
                                        (round (r*255))
                                        (round (g*255))
-                                       (round (b*255))) img 
+                                       (round (b*255))) img
 
    ImageRGBA8  img      -> pixelMap dropTransparency img
    ImageRGBA16 img      -> rgb8Image (ImageRGB16 (pixelMap dropTransparency img))
-   ImageYCbCr8 img      -> convertImage img 
+   ImageYCbCr8 img      -> convertImage img
    ImageCMYK8  img      -> convertImage img
    ImageCMYK16 img      -> rgb8Image (ImageRGB16 (convertImage img))
 
 weightedMean :: [(PixelRGB8, Rational)] -> PixelRGB8
-weightedMean xs = if den /= 0 then toPix (multAll num (1/den)) else PixelRGB8 0 0 0 
-   where num = foldl (\acc (pix,a) -> (multAll (toTulpe pix) a) `addAll` acc) (0,0,0) xs
-         den = foldl (\acc (_,b) -> acc + b) 0 xs
+weightedMean xs = if den /= 0 then toPix (multAll num (1/den)) else PixelRGB8 0 0 0
+   where num = foldl' (\acc (pix,a) -> (multAll (toTulpe pix) a) `addAll` acc) (0,0,0) xs
+         den = foldl' (\acc (_,b) -> acc + b) 0 xs
 
 toTulpe :: PixelRGB8 -> (Rational,Rational,Rational)
 toTulpe (PixelRGB8 r g b) = (fromIntegral r, fromIntegral g, fromIntegral b)
@@ -183,22 +184,22 @@ toPix (r,g,b) = PixelRGB8 (fromIntegral r') (fromIntegral g') (fromIntegral b')
          b' = (max 0 (round b)) `min` 255 :: Int
 
 multAll :: Num a => (a,a,a) -> a -> (a,a,a)
-multAll (a,b,c) p = (a*p,b*p,c*p)
+multAll (!a,!b,!c) !p = (a*p,b*p,c*p)
 
 addAll :: Num a => (a,a,a) -> (a,a,a) -> (a,a,a)
-addAll (a,b,c) (d,e,f) = (a+d,b+e,c+f)
+addAll (!a,!b,!c) (!d,!e,!f) = (a+d,b+e,c+f)
 
 meanInRectRGB :: (Image PixelRGB8) -> RCord -> RCord -> PixelRGB8
 meanInRectRGB img (x,y) (xd,yd) = weightedMean valAndWgt
-   where maxX = (imageWidth img) - 1
-         maxY = (imageHeight img) - 1
-         inds = [ (i,j) | i <- xinds, j <- yinds]
-         xinds = [(floor x)..(min (floor (x+xd)) maxX) ]
-         yinds = [(floor y)..(min (floor (y+yd)) maxY) ]
-         area xi yi = ((x2 xi)-(x1 xi))*((y2 xi)-(y1 xi))
-         x1 xi = max (fromIntegral xi) x
-         x2 xi = min (fromIntegral (xi+1)) (x+xd)
-         y1 yi = max (fromIntegral yi) y
-         y2 yi = min (fromIntegral (yi+1)) (y+yd)
-         valAndWgt = map (\(a,b) -> (pixelAt img a b,area a b)) inds
+   where !maxX = (imageWidth img) - 1
+         !maxY = (imageHeight img) - 1
+         !inds = [ (i,j) | i <- xinds, j <- yinds]
+         !xinds = [(floor x)..(min (floor (x+xd)) maxX) ]
+         !yinds = [(floor y)..(min (floor (y+yd)) maxY) ]
+         area !xi !yi = ((x2 xi)-(x1 xi))*((y2 yi)-(y1 yi)) -- ((y2 xi)-(y1 xi))
+         x1 !xi = max (fromIntegral xi) x
+         x2 !xi = min (fromIntegral (xi+1)) (x+xd)
+         y1 !yi = max (fromIntegral yi) y
+         y2 !yi = min (fromIntegral (yi+1)) (y+yd)
+         !valAndWgt = map (\(a,b) -> (pixelAt img a b,area a b)) inds
 

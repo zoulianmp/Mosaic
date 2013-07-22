@@ -13,10 +13,10 @@ import           Mosaic
 
 data ImageRow = ImageRow
    {
-     fullImage :: FilePath
-   , tileImage :: FilePath
-   , photoVal  :: PhotoVal
-   , mosaicIds :: String
+     fullImage :: !FilePath
+   , tileImage :: !FilePath
+   , photoVal  :: !PhotoVal
+   , mosaicIds :: !String
    } deriving (Show)
 
 testRow = ImageRow "test.png" "square.png" (PhotoVal (PixelRGB8 100 170 20))
@@ -34,6 +34,15 @@ toSqlValues (ImageRow f t (PhotoVal (PixelRGB8 r g b)) s) =
    toSql ((fromIntegral g) :: Int),
    toSql ((fromIntegral b) :: Int),
    toSql s]
+
+fromSqlValues entry = (ImageRow  (fromSql $ entry !! 1)
+                           (fromSql $ entry !! 2)
+                           (PhotoVal (PixelRGB8
+                              (fromIntegral (fromSql (entry !! 3) :: Int))
+                              (fromIntegral (fromSql (entry !! 4) :: Int))
+                              (fromIntegral (fromSql (entry !! 5) :: Int))))
+                           (fromSql $ entry !! 6))
+
 
 connection = connectSqlite3 "Images.db"
 
@@ -88,6 +97,19 @@ getClosestId i = do
 
    return res
 
+getById :: Int -> IO (Maybe ImageRow)
+getById i = do
+   conn <- connection
+
+   res <- quickQuery' conn "SELECT * FROM Images WHERE rowid = (?)" [toSql i]
+
+   disconnect conn
+
+   case res of
+      [entry] -> return (Just (fromSqlValues entry))
+      _       -> return Nothing
+
+
 getClosestColor :: PixelRGB8 -> IO ImageRow
 getClosestColor (PixelRGB8 r g b) = do
    conn <- connection
@@ -104,13 +126,7 @@ getClosestColor (PixelRGB8 r g b) = do
 
    let entry = head res
 
-   return (ImageRow  (fromSql $ entry !! 1)
-                     (fromSql $ entry !! 2)
-                     (PhotoVal (PixelRGB8
-                        (fromIntegral (fromSql (entry !! 3) :: Int))
-                        (fromIntegral (fromSql (entry !! 4) :: Int))
-                        (fromIntegral (fromSql (entry !! 5) :: Int))))
-                     (fromSql $ entry !! 6))
+   return (fromSqlValues entry)
 
 allRows str = do
    conn <- connection

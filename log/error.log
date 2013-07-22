@@ -68,3 +68,199 @@ A web handler threw an exception. Details:
 SqlError {seState = "", seNativeError = 1, seErrorMsg = "prepare 136: SELECT *, MIN( (Red - 195)*(Red - 195) + (Green - 221)*(Green - 221) + (Blue - 242)*(Blue - 242))AS Dist FROM Images ORDER BY Dist DESC: no such table: Images"}
 [21/Jul/2013:16:41:55 -0500] Server.httpServe: SHUTDOWN
 [21/Jul/2013:16:41:55 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:18:53:49 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:19:16:56 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:19:16:56 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:19:47:02 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:21:14:54 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:21:14:54 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:21:15:12 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:21:19:04 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:21:19:04 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:21:19:15 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:21:28:07 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:21:28:07 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:21:28:51 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:21:32:13 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:21:32:13 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:21:32:53 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:21:41:53 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:21:41:53 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:14:34 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:15:29 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:15:29 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:15:38 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:18:43 -0500] During processing of request from 127.0.0.1:43432
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43432\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/7c7xjDF.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:19:08 -0500] During processing of request from 127.0.0.1:43432
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43432\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:35:27 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:35:27 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:35:39 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:35:57 -0500] During processing of request from 127.0.0.1:43519
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43519\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:36:52 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:36:52 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:37:02 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:37:19 -0500] During processing of request from 127.0.0.1:43526
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43526\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:37:48 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:37:48 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:38:28 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:38:44 -0500] During processing of request from 127.0.0.1:43535
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43535\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:39:55 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:39:55 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:40:12 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:40:28 -0500] During processing of request from 127.0.0.1:43542
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43542\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:43:44 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:43:44 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:44:11 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:44:27 -0500] During processing of request from 127.0.0.1:43592
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43592\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:49:01 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:49:01 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:49:11 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:49:31 -0500] During processing of request from 127.0.0.1:43678
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43678\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:54:24 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:54:24 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:54:36 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:54:49 -0500] During processing of request from 127.0.0.1:43724
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43724\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:55:57 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:55:57 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:56:06 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:56:32 -0500] During processing of request from 127.0.0.1:43728
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43728\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:22:56:54 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:22:56:54 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:22:57:03 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:22:57:15 -0500] During processing of request from 127.0.0.1:43732
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43732\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:10:47 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:10:47 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:11:30 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:11:44 -0500] During processing of request from 127.0.0.1:43890
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43890\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:13:55 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:13:55 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:14:08 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:14:28 -0500] During processing of request from 127.0.0.1:43926
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43926\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:16:49 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:16:49 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:17:02 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:17:16 -0500] During processing of request from 127.0.0.1:43952
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43952\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:17:22 -0500] During processing of request from 127.0.0.1:43954
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43954\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:17:47 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:17:47 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:18:09 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:18:23 -0500] During processing of request from 127.0.0.1:43959
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43959\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:20:39 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:20:39 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:20:55 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:21:07 -0500] During processing of request from 127.0.0.1:43980
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:43980\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/iQFwAiu.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+stack overflow
+[21/Jul/2013:23:22:54 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:22:54 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:25:35 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:32:16 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:32:16 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:33:08 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[21/Jul/2013:23:34:29 -0500] Server.httpServe: SHUTDOWN
+[21/Jul/2013:23:34:29 -0500] Server.httpServe: BACKEND STOPPED
+[21/Jul/2013:23:59:32 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:01:47 -0500] During processing of request from 127.0.0.1:44550
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:44550\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/4sIYvw5.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:00:06:04 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:00:06:04 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:00:15:29 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:17:35 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:00:17:35 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:00:18:19 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:20:02 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:00:20:02 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:00:20:14 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:22:21 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:00:22:21 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:00:24:40 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:24:57 -0500] During processing of request from 127.0.0.1:44958
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:44958\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/gybkNNQ.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:00:25:13 -0500] During processing of request from 127.0.0.1:44958
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:44958\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/72dVGfm.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:00:28:06 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:00:32:42 -0500] During processing of request from 127.0.0.1:45141
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:45141\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/RVmVK3f.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:00:34:44 -0500] During processing of request from 127.0.0.1:45141
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:45141\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/7fljPY4.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list

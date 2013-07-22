@@ -4,7 +4,7 @@ Synopsis:            Project Synopsis Here
 Description:         Project Description Here
 License:             AllRightsReserved
 Author:              Author
-Maintainer:          maintainer@example.com
+Maintainer:          nsandber@gmail.com
 Stability:           Experimental
 Category:            Web
 Build-type:          Simple
@@ -35,6 +35,6 @@ Executable Mosaic
 
   if impl(ghc >= 6.12.0)
     ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2
-                 -fno-warn-unused-do-bind -XRankNTypes
+                 -fno-warn-unused-do-bind -XRankNTypes -XBangPatterns -XDoAndIfThenElse
   else
     ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2
