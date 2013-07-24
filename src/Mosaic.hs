@@ -20,7 +20,13 @@ import qualified Data.Vector.Storable as V
 
 type RCord = (Rational, Rational)
 
-data PhotoVal = PhotoVal !PixelRGB8 deriving (Show)
+data PhotoVal = PhotoVal
+   {
+     topLeft   :: !PixelRGB8 
+   , topRight  :: !PixelRGB8
+   , botLeft   :: !PixelRGB8
+   , botRight  :: !PixelRGB8
+   }deriving (Show)
 
 -- Remove later
 right (Left _) = error " not right"
@@ -58,9 +64,14 @@ squareImage img = generateImage (\x y -> pixelAt img x y) edge edge
 thumbNailWidth = 400
 
 prepareForDB :: DynamicImage -> (Image PixelRGB8, PhotoVal)
-prepareForDB dyn = (imageRGB8, PhotoVal (meanInRectRGB imageRGB8 (0,0) (sz,sz)))
-   where imageRGB8 = squareImage (rgb8Image dyn)
-         sz = fromIntegral (imageWidth imageRGB8)
+prepareForDB dyn = (imageRGB8,
+   PhotoVal
+   (meanInRectRGB imageRGB8 (0,0) (sz/2,sz/2))
+   (meanInRectRGB imageRGB8 (sz/2,0) (sz/2,sz/2))
+   (meanInRectRGB imageRGB8 (0,sz/2) (sz/2,sz/2))
+   (meanInRectRGB imageRGB8 (sz/2,sz/2) (sz/2,sz/2)))
+      where imageRGB8 = squareImage (rgb8Image dyn)
+            sz = fromIntegral (imageWidth imageRGB8)
 
 calQual :: Int -> Int
 calQual imgWidth
@@ -109,6 +120,23 @@ show3Dig i
    | length sh == 3  = sh
    | length sh < 3   = (reverse . (take 3)) $ (reverse sh) ++ (repeat '0')
       where sh = show i
+
+scaleAvgPhotoVal :: Image PixelRGB8 -> Int -> [[PhotoVal]]
+scaleAvgPhotoVal img width = avgPixs
+   where avgPixs = map row [0..(chsHigh)]
+         dim = charDims img width
+         chsHigh = floor ((fromIntegral (imageHeight img))/(snd dim))
+         row c = map (\i -> photoValInRect img
+               ((fromIntegral i)*(fst dim),(fromIntegral c)*(snd dim)) dim )
+               [0..(width-1)]
+
+photoValInRect :: Image PixelRGB8 -> RCord -> RCord -> PhotoVal
+photoValInRect img (x,y) (xd,yd) = PhotoVal
+   (meanInRectRGB img (x,y) (xd/2,yd/2))
+   (meanInRectRGB img (x+(xd/2),y) (xd/2,yd/2))
+   (meanInRectRGB img (x,y+(yd/2)) (xd/2,yd/2))
+   (meanInRectRGB img (x+(xd/2),y+(yd/2)) (xd/2,yd/2))
+   
 
 scaleAvgPixs :: Image PixelRGB8 -> Int -> [[PixelRGB8]]
 scaleAvgPixs img width = avgPixs

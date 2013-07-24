@@ -1,3 +1,4 @@
+
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
@@ -31,6 +32,12 @@ commaSeparated []       = []
 commaSeparated [x]      = x
 commaSeparated (x:xs)   = x ++ "," ++ (commaSeparated xs)
 
+isImageExt :: String -> Bool
+isImageExt ".jpg"    = True
+isImageExt ".jpeg"   = True
+isImageExt ".png"    = True
+isImageExt _         = False
+
 fromCS :: String -> [String]
 fromCS str
    | null l       = [f]
@@ -60,6 +67,9 @@ emptyHtml = htmlStr ""
 htmlStr :: String -> Html
 htmlStr = B.toHtml
 
+-- ^^
+-- Functions that should probably be elsewhere
+
 main :: IO ()
 main = quickHttpServe site
 
@@ -67,7 +77,9 @@ site :: Snap ()
 site =
     ifTop (homePageHandler)
     <|>
-    route [ ("addphoto", addPhotoHandler)
+    route [
+            ("addphoto", addPhotoHandler)
+          , ("random", randomHandler)
           , ("added", addedHandler)
           , ("photo/:photoind", photoHandler)
           , ("about", writeBS "about")
@@ -75,6 +87,11 @@ site =
           ]
     <|>
     dir "static" (serveDirectory ".")
+
+
+randomHandler :: Snap ()
+randomHandler = do
+   redirect "/"
 
 echoHandler :: Snap ()
 echoHandler = do
@@ -98,9 +115,9 @@ photoHandler = do
                      if ((not . null) (mosaicIds a))
                      then do
                         let fpaths = fromCS (mosaicIds a)
-                        blaze $ homePage (map ("../"++) fpaths) 50
+                        blaze $ homePage ('/' : fullImage a) (map ('/':) fpaths) 50
                      else do
-                        (blaze .  wrapper . singleImage . ("../" ++) . fullImage) a
+                        (blaze .  wrapper . singleImage . ('/' :) . fullImage) a
 
 singleImage :: FilePath -> Html
 singleImage path = do
@@ -109,12 +126,9 @@ singleImage path = do
 homePageHandler :: Snap ()
 homePageHandler = method GET getter
    where getter = do
-            dyn <- liftIO $ readImage "images/Sir Ian.png"
-            case dyn of
-               Left  _     -> writeBS "fuck"
-               Right image -> do
-                  let arr = scaleMosic ((\(ImageRGB8 i) -> i) image) 50
-                  blaze $ homePage (concat arr) 50
+            imgRow <- liftIO getRandom
+            let fpaths = fromCS (mosaicIds imgRow)
+            blaze $ homePage (fullImage imgRow) fpaths 50
 
 addPhotoHandler :: Snap ()
 addPhotoHandler = method GET getter
@@ -141,14 +155,14 @@ addedHandler = method POST setter
                            Right dy -> do
                               -- get the mosaic
                               let !rgb8 = rgb8Image dy
-                                  !pixs = concat $ scaleAvgPixs rgb8 50
+                                  !pvs = concat $ scaleAvgPhotoVal rgb8 50
                                   !fullP = "images/" ++ (takeFileName (fromBS u))
                                   !tileP = "tiles/" ++ (takeFileName (fromBS u))
                                   (!sqrImage, !pVal) = prepareForDB (ImageRGB8 rgb8)
 
 
                               -- rewrite image to drive
-                              dbEntries <- liftIO $ mapM getClosestColor pixs
+                              dbEntries <- liftIO $ mapM getClosestColor pvs
                               let !fpaths  = map tileImage dbEntries
                                   !newEntry = ImageRow fullP tileP pVal
                                                  (commaSeparated fpaths)
@@ -168,12 +182,6 @@ getFile url = do
       Just u   -> do
          resp <- ( (simpleHTTP . defaultGETRequest_) u ) >>= getResponseBody
          return (Just resp)
-
-isImageExt :: String -> Bool
-isImageExt ".jpg"    = True
-isImageExt ".jpeg"   = True
-isImageExt ".png"    = True
-isImageExt _         = False
 
 -- tries to download the image given by the url if fails returns the error
 -- on the left, success, filepath on the right
@@ -212,16 +220,34 @@ navBar = do
 
       B.div B.! A.class_ "innerNav" $ do
 
-         B.a B.! A.href "/addphoto" $ htmlStr "Add Your Own Photo"
+         B.table $ do
+            B.tr $ do
+               B.td $ do
+                  navButton "Random" "/random"
 
-         B.a B.! A.href "/about" $ htmlStr "About"
+               B.td $ do
+                  navButton "Add Your Own Photo" "/addphoto"
+
+               B.td $ do
+                  navButton "About" "/about"
+
+               {-
+               B.td $ do
+                  B.div B.! A.id "actualPhoto" B.! A.class_ "navButton" $ do 
+                     htmlStr "Show Photo"
+               -}
+
+--navButton :: Html -> B.AttributeValue -> Html
+navButton name location = do
+   B.a B.! A.href location $ do
+      B.div B.! A.class_ "navButton" $ do
+         htmlStr name
 
 wrapper :: Html -> Html
 wrapper inner = do
    B.docType
    B.head $ do
-      B.link B.! A.rel "stylesheet" B.! A.type_ "text/css" B.! A.href "Site.css"
-      B.link B.! A.rel "stylesheet" B.! A.type_ "text/css" B.! A.href "../Site.css" -- BAAD, change
+      B.link B.! A.rel "stylesheet" B.! A.type_ "text/css" B.! A.href "/Site.css"
 
    B.body $ do
 
@@ -229,14 +255,20 @@ wrapper inner = do
 
       inner
 
-homePage :: [FilePath] -> Int -> Html
-homePage photoNames columns = do
+homePage :: FilePath -> [FilePath] -> Int -> Html
+homePage photo photoNames columns = do
 
    wrapper $ do
 
       B.div B.! A.class_ "gridContainer" $ do
-         pictureTable photoNames columns
+         {-
+         B.div B.! A.id "displayPhoto" $ do
+            B.span $ htmlStr "Display Photo"
+         -}
+         B.div B.! A.id "actualContainer" $ do
+            B.img B.! A.src (fromString photo) B.! A.id "actualImage"
 
+         pictureTable photoNames columns
 
 pictureTable :: [FilePath] -> Int -> Html
 pictureTable paths column = do
@@ -258,10 +290,10 @@ pictureRow paths cols = do
                picRow (p:paths) cols = do
                   B.td $ do
                      B.div B.! A.class_ "tile" $ do
-                        B.img B.! A.src (fromString p)
+                        B.a B.! A.href (fromString ("/photos/" ++ p)) $ do 
+                           B.img B.! A.src (fromString p)
 
                   picRow paths (cols-1)
-
 
 
 

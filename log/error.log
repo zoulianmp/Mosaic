@@ -277,3 +277,220 @@ A web handler threw an exception. Details:
 Char.intToDigit: not a digit -1
 [22/Jul/2013:17:31:18 -0500] Server.httpServe: SHUTDOWN
 [22/Jul/2013:17:31:18 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:18:09:25 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:18:26:56 -0500] During processing of request from 127.0.0.1:47635
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:47635\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/16ulAXd.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:18:27:17 -0500] During processing of request from 127.0.0.1:47635
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:47635\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/xIe2X6D.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[22/Jul/2013:18:37:22 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:18:37:22 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:18:39:02 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:18:39:32 -0500] During processing of request from 127.0.0.1:48063
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:48063\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 46\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 46\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/uWdj9h.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+SqlError {seState = "", seNativeError = 1, seErrorMsg = "prepare 150: SELECT *, MIN( (Red - 58)*(Red - 58) + (Green - 40)*(Green - 40) + (Blue - 27)*(Blue - 27))AS Dist FROM Images ORDER BY Dist DESC WHERE rowid >= 2200: near \"WHERE\": syntax error"}
+[22/Jul/2013:18:40:17 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:18:40:17 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:18:42:46 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:18:42:51 -0500] During processing of request from 127.0.0.1:48126
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:48126\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 46\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 46\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/uWdj9h.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+SqlError {seState = "", seNativeError = 1, seErrorMsg = "prepare 205: SELECT rowid, FullImage, TileImage, Red, Green, Blue, MosaicIds, MIN( (Red - 58)*(Red - 58) + (Green - 40)*(Green - 40) + (Blue - 27)*(Blue - 27))AS Dist FROM Images ORDER BY Dist DESC WHERE rowid >= 2200: near \"WHERE\": syntax error"}
+[22/Jul/2013:18:43:14 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:18:43:14 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:18:43:47 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:19:07:44 -0500] During processing of request from 127.0.0.1:48494
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:48494\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 46\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 46\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/0EDhvh.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+thread killed
+[22/Jul/2013:19:38:34 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:19:38:34 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:21:15:35 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:21:17:12 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:21:17:12 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:21:17:38 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:21:18:11 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:21:18:11 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:21:18:25 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:21:18:57 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:21:18:57 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:21:19:06 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:21:19:10 -0500] During processing of request from 127.0.0.1:50550
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:50550\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: import\n    contextpath: /\n    URI: /import\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+tiles/eGNj4.png: openBinaryFile: does not exist (No such file or directory)
+[22/Jul/2013:21:19:37 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:21:19:37 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:21:19:44 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:21:20:49 -0500] During processing of request from 127.0.0.1:50555
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:50555\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: import\n    contextpath: /\n    URI: /import\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+thread killed
+[22/Jul/2013:21:22:36 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:21:22:36 -0500] Server.httpServe: BACKEND STOPPED
+[22/Jul/2013:22:00:45 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[22/Jul/2013:22:23:41 -0500] Server.httpServe: SHUTDOWN
+[22/Jul/2013:22:23:41 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:17:26:00 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:17:30:10 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:30:28 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:31:42 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54102
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54102\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/6\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/5iFWYUl.png\n    contextpath: /\n    URI: /tiles/5iFWYUl.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Broken pipe)
+[23/Jul/2013:17:31:42 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54101
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54101\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/6\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/P7b8r.png\n    contextpath: /\n    URI: /tiles/P7b8r.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:31:42 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:31:42 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:31:42 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54098
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54098\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/6\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/An%20Engineer%20amp%20a%20Nerd.png\n    contextpath: /\n    URI: /tiles/An%20Engineer%20amp%20a%20Nerd.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:31:42 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:32:18 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:32:18 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54103
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54103\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/12\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/1aQUY.png\n    contextpath: /\n    URI: /tiles/1aQUY.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:32:18 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54117
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54117\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/101\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/pxXYp.png\n    contextpath: /\n    URI: /tiles/pxXYp.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] httpSession caught an exception during sending response phase:
+During processing of request from 127.0.0.1:54115
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:54115\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: image/webp,*/*;q=0.8\n Accept-Encoding: gzip,deflate,sdch\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/photo/101\n      ========================================\n    content-length: Nothing\n    method: GET\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: tiles/vMlgD.png\n    contextpath: /\n    URI: /tiles/vMlgD.png\n    params:\n      ========================================\n      \n      ========================================\n>"
+A web handler threw an exception. Details:
+System.SendFile.Linux: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:36:24 -0500] ["127.0.0.1"]: an exception escaped to toplevel:
+recv: resource vanished (Connection reset by peer)
+[23/Jul/2013:17:53:30 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:17:53:30 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:17:53:46 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:18:25:51 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:18:25:51 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:18:26:02 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:18:26:44 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:18:26:44 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:18:27:18 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:18:28:19 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:18:28:19 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:18:28:32 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:18:46:02 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:18:46:02 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:18:46:53 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:19:08:20 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:19:08:20 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:19:08:51 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:19:09:00 -0500] During processing of request from 127.0.0.1:55829
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:55829\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/z1uJKTj.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[23/Jul/2013:19:12:50 -0500] During processing of request from 127.0.0.1:56242
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:56242\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/MLn7fuc.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[23/Jul/2013:20:37:17 -0500] During processing of request from 127.0.0.1:57640
+request:
+"Request <\n    server-name: 0.0.0.0\n    remote: 127.0.0.1:57640\n    local: 127.0.0.1:8000\n    Headers:\n      ========================================\n          Content-Length: 47\n User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36\n Origin: http://0.0.0.0:8000\n Connection: keep-alive\n Host: 0.0.0.0:8000\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n Content-Type: application/x-www-form-urlencoded\n Accept-Encoding: gzip,deflate,sdch\n Cache-Control: max-age=0\n Accept-Language: en-US,en;q=0.8\n Referer: http://0.0.0.0:8000/addphoto\n      ========================================\n    content-length: Just 47\n    method: POST\n    version: (1,1)\n    cookies:\n      ========================================\n      \n      ========================================\n    pathinfo: added\n    contextpath: /\n    URI: /added\n    params:\n      ========================================\n      photoUrl: [\"http://i.imgur.com/XSp51HX.jpg\"]\n      ========================================\n>"
+A web handler threw an exception. Details:
+Prelude.head: empty list
+[23/Jul/2013:21:08:45 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:08:45 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:08:55 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:10:53 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:10:53 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:11:05 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:27:09 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:27:09 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:27:41 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:31:49 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:31:49 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:32:00 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:32:17 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:32:17 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:38:24 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:42:51 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:42:51 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:43:01 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:46:26 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:46:26 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:46:36 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:21:57:24 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:21:57:24 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:21:57:34 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8010/]
+[23/Jul/2013:22:01:10 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:01:10 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:01:12 -0500] Server.httpServe: START, binding to [http://0.0.0.0:80/]
+[23/Jul/2013:22:01:12 -0500] Error on startup: 
+bind: permission denied (Permission denied)
+[23/Jul/2013:22:01:15 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:22:02:14 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:02:14 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:02:16 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8010/]
+[23/Jul/2013:22:42:08 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:42:08 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:42:59 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:22:43:43 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:43:43 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:44:03 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:22:47:37 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:47:37 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:48:32 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:22:52:37 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:52:37 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:53:24 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:22:56:21 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:22:56:21 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:22:56:30 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:23:03:59 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:23:03:59 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:23:04:10 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:23:07:33 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:23:07:33 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:23:07:43 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:23:13:16 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:23:13:16 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:23:13:47 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]
+[23/Jul/2013:23:14:45 -0500] Server.httpServe: SHUTDOWN
+[23/Jul/2013:23:14:45 -0500] Server.httpServe: BACKEND STOPPED
+[23/Jul/2013:23:14:58 -0500] Server.httpServe: START, binding to [http://0.0.0.0:8000/]

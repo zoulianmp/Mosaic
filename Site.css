@@ -31,24 +31,70 @@ div.tile {
 }
 
 .tile img {
+   border: 0px;
    width: 100%;
 }
 
 /* menu bar */
 div.navBar {
+   padding: 0px;
    width: 100%;
-   height: 20px;
+   height: 50px;
    display: block;
-   background-color: #550055;
+   background-color: #FFFFFF;
 }
 
 div.innerNav {
-   margin-right: auto;
+   display: inline-block;
    margin-left: auto;
+   margin-right: auto;
 }
 
+div.innerNav table tr td {
+   padding: 5px;
+   margin-left: auto;
+   margin-right: auto;
+}
 
+#displayPhoto {
+   margin-left: auto;
+   margin-right: auto;
+   display: block:
+   max-width: 50px;
+   height: 20px;
+   background-color: #4AA02C;
+}
 
+#displayPhoto span {
+   color: #FFFFFF;
+}
+
+#actualContainer {
+   position: absolute;
+   opacity: 0;
+   width: 1250px;    
+}
+
+#actualContainer:hover {
+   opacity: 1;
+}
+
+#actualImage {
+   width: 100%;
+}
+
+div.navButton {
+   display: block;
+   padding: 3px;
+   width: 200px;
+   height: 16px;
+   background-color: #00FF00;
+}
+
+div.navButton a {
+   font: bold;
+   color: #FFFFFF;
+}
 
 
 

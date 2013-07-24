@@ -3,6 +3,7 @@ module DataAccess where
 
 import           System.FilePath
 import           Codec.Picture.Types
+import           Data.List (intersperse)
 
 import           Database.HDBC
 import           Database.HDBC.Sqlite3
@@ -19,29 +20,80 @@ data ImageRow = ImageRow
    , mosaicIds :: !String
    } deriving (Show)
 
-testRow = ImageRow "test.png" "square.png" (PhotoVal (PixelRGB8 100 170 20))
-   "1,2"
+testRow1 = ImageRow
+   "path1.png"
+   "path2.png"
+   (PhotoVal
+      (PixelRGB8 120 1 200)
+      (PixelRGB8 20 10 20)
+      (PixelRGB8 120 240 100)
+      (PixelRGB8 220 70 200)
+   )
+   "test1"
 
-testRow1 = ImageRow "test.png" "square.png" (PhotoVal (PixelRGB8 50 30 80))
-   "1,2"
+photoVal1 = (PhotoVal
+               (PixelRGB8 120 1 200)
+               (PixelRGB8 20 10 20)
+               (PixelRGB8 120 240 100)
+               (PixelRGB8 220 70 200)
+            )
 
-testRow2 = ImageRow "test.png" "square.png" (PhotoVal (PixelRGB8 200 100 10))
-   "1,2"
+testRow2 = ImageRow
+   "path1.png"
+   "path2.png"
+   (PhotoVal
+      (PixelRGB8 120 240 100)
+      (PixelRGB8 220 70 200)
+      (PixelRGB8 120 1 200)
+      (PixelRGB8 20 10 20)
+   )
+   "test1"
 
-toSqlValues (ImageRow f t (PhotoVal (PixelRGB8 r g b)) s) =
-   [toSql f, toSql t,
-   toSql ((fromIntegral r) :: Int),
-   toSql ((fromIntegral g) :: Int),
-   toSql ((fromIntegral b) :: Int),
-   toSql s]
 
-fromSqlValues entry = (ImageRow  (fromSql $ entry !! 1)
-                           (fromSql $ entry !! 2)
-                           (PhotoVal (PixelRGB8
-                              (fromIntegral (fromSql (entry !! 3) :: Int))
-                              (fromIntegral (fromSql (entry !! 4) :: Int))
-                              (fromIntegral (fromSql (entry !! 5) :: Int))))
-                           (fromSql $ entry !! 6))
+toSqlValues (ImageRow f t pv s) =
+   [toSql f, toSql t]
+   ++ (photoValToSql pv)
+   ++ [toSql s]
+
+photoValToSql (PhotoVal tl tr bl br) =
+   (pixelRGB8ToSql tl)
+   ++ (pixelRGB8ToSql tr)
+   ++ (pixelRGB8ToSql bl)
+   ++ (pixelRGB8ToSql br)
+
+pixelRGB8ToSql (PixelRGB8 r g b) =
+   [ toSql ((fromIntegral r) :: Int)
+   , toSql ((fromIntegral g) :: Int)
+   , toSql ((fromIntegral b) :: Int)
+   ]
+
+fromSqlValues entry =
+   ImageRow
+   (fromSql $ entry !! 1)
+   (fromSql $ entry !! 2)
+   (PhotoVal
+      (PixelRGB8
+         (fromIntegral (fromSql (entry !! 3) :: Int))
+         (fromIntegral (fromSql (entry !! 4) :: Int))
+         (fromIntegral (fromSql (entry !! 5) :: Int))
+      )
+      (PixelRGB8
+         (fromIntegral (fromSql (entry !! 6) :: Int))
+         (fromIntegral (fromSql (entry !! 7) :: Int))
+         (fromIntegral (fromSql (entry !! 8) :: Int))
+      )
+      (PixelRGB8
+         (fromIntegral (fromSql (entry !! 9) :: Int))
+         (fromIntegral (fromSql (entry !! 10) :: Int))
+         (fromIntegral (fromSql (entry !! 11) :: Int))
+      )
+      (PixelRGB8
+         (fromIntegral (fromSql (entry !! 12) :: Int))
+         (fromIntegral (fromSql (entry !! 13) :: Int))
+         (fromIntegral (fromSql (entry !! 14) :: Int))
+      )
+   )
+   (fromSql $ entry !! 15)
 
 
 connection = connectSqlite3 "Images.db"
@@ -59,13 +111,48 @@ createImagesTable = do
             "(Id INTEGER PRIMARY KEY AUTOINCREMENT," ++
             "FullImage TEXT NOT NULL, " ++
             "TileImage TEXT NOT NULL, " ++
-            "Red INTEGER NOT NULL, " ++
-            "Green INTEGER NOT NULL, " ++
-            "Blue INTEGER NOT NULL, " ++
+            "TL_Red INTEGER NOT NULL, " ++
+            "TL_Green INTEGER NOT NULL, " ++
+            "TL_Blue INTEGER NOT NULL, " ++
+            "TR_Red INTEGER NOT NULL, " ++
+            "TR_Green INTEGER NOT NULL, " ++
+            "TR_Blue INTEGER NOT NULL, " ++
+            "BL_Red INTEGER NOT NULL, " ++
+            "BL_Green INTEGER NOT NULL, " ++
+            "BL_Blue INTEGER NOT NULL, " ++
+            "BR_Red INTEGER NOT NULL, " ++
+            "BR_Green INTEGER NOT NULL, " ++
+            "BR_Blue INTEGER NOT NULL, " ++
             "MosaicIds)") []
    commit conn
    disconnect conn
 
+insertReplace :: (Int,ImageRow) -> IO ()
+insertReplace (id, imgRow) = do
+   conn <- connection
+
+   createImagesTable
+
+   putStrLn $ show id ++ " insert/replace"
+
+   res <- run conn ("INSERT or REPLACE INTO Images "
+            ++ "(rowid, FullImage, TileImage,"
+            ++ "TL_Red, TL_Green, TL_Blue,"
+            ++ "TR_Red, TR_Green, TR_Blue,"
+            ++ "BL_Red, BL_Green, BL_Blue,"
+            ++ "BR_Red, BR_Green, BR_Blue,"
+            ++ "MosaicIds) VALUES "
+            ++ "(" ++ (intersperse ',' $ replicate 16 '?') ++ ")")
+            (toSql id : (toSqlValues imgRow))
+
+   id <- quickQuery' conn "SELECT last_insert_rowid()" []
+
+   commit conn
+
+   disconnect conn
+
+   return ()
+   
 
 insert :: ImageRow -> IO Int
 insert row = do
@@ -73,9 +160,14 @@ insert row = do
 
    createImagesTable
 
-   res <- run conn ("INSERT INTO Images " ++
-            "(FullImage, TileImage, Red, Green, Blue, MosaicIds) VALUES " ++
-            "(    ?    ,     ?    ,  ? ,   ?  ,  ?  ,     ? )")
+   res <- run conn ("INSERT INTO Images "
+            ++ "(FullImage, TileImage,"
+            ++ "TL_Red, TL_Green, TL_Blue,"
+            ++ "TR_Red, TR_Green, TR_Blue,"
+            ++ "BL_Red, BL_Green, BL_Blue,"
+            ++ "BR_Red, BR_Green, BR_Blue,"
+            ++ "MosaicIds) VALUES "
+            ++ "(" ++ (intersperse ',' $ replicate 15 '?') ++ ")")
             (toSqlValues row)
 
    id <- quickQuery' conn "SELECT last_insert_rowid()" []
@@ -97,6 +189,16 @@ getClosestId i = do
 
    return res
 
+getRandom :: IO ImageRow
+getRandom = do
+   conn <- connection
+
+   res <- quickQuery' conn "SELECT * FROM Images ORDER BY RANDOM() LIMIT 1" []
+
+   disconnect conn
+
+   return $ (fromSqlValues . head) res
+
 getById :: Int -> IO (Maybe ImageRow)
 getById i = do
    conn <- connection
@@ -110,17 +212,36 @@ getById i = do
       _       -> return Nothing
 
 
-getClosestColor :: PixelRGB8 -> IO ImageRow
-getClosestColor (PixelRGB8 r g b) = do
-   conn <- connection
+--getClosestColor :: PhotoVal -> IO ImageRow
+getClosestColor
+      (PhotoVal
+      (PixelRGB8 tl_r tl_g tl_b) (PixelRGB8 tr_r tr_g tr_b)
+      (PixelRGB8 bl_r bl_g bl_b) (PixelRGB8 br_r br_g br_b) ) = do
+   conn <-connection
 
-   res <- quickQuery' conn ("SELECT *, " ++
-               "MIN( " ++
-               "(Red - " ++ (show r) ++ ")*(Red - " ++ (show r) ++ ") + " ++
-               "(Green - " ++ (show g) ++ ")*(Green - " ++ (show g) ++ ") + " ++
-               "(Blue - " ++ (show b) ++ ")*(Blue - " ++ (show b) ++ ")" ++
-               ")AS Dist FROM " ++
-               "Images ORDER BY Dist DESC") []
+   res <- quickQuery' conn (
+            "SELECT rowid, FullImage, TileImage,"
+            ++ "TL_Red, TL_Green, TL_Blue,"
+            ++ "TR_Red, TR_Green, TR_Blue,"
+            ++ "BL_Red, BL_Green, BL_Blue,"
+            ++ "BR_Red, BR_Green, BR_Blue,"
+            ++ "MosaicIds, "
+            ++ "MIN( "
+            ++ "(TL_Red - "   ++ (show tl_r) ++ ")*(TL_Red - "    ++ (show tl_r) ++ ") + "
+            ++ "(TL_Green - " ++ (show tl_g) ++ ")*(TL_Green - "  ++ (show tl_g) ++ ") + "
+            ++ "(TL_Blue - "  ++ (show tl_b) ++ ")*(TL_Blue - "   ++ (show tl_b) ++ ") + "
+            ++ "(TR_Red - "   ++ (show tr_r) ++ ")*(TR_Red - "    ++ (show tr_r) ++ ") + "
+            ++ "(TR_Green - " ++ (show tr_g) ++ ")*(TR_Green - "  ++ (show tr_g) ++ ") + "
+            ++ "(TR_Blue - "  ++ (show tr_b) ++ ")*(TR_Blue - "   ++ (show tr_b) ++ ") + "
+            ++ "(BL_Red - "   ++ (show bl_r) ++ ")*(BL_Red - "    ++ (show bl_r) ++ ") + "
+            ++ "(BL_Green - " ++ (show bl_g) ++ ")*(BL_Green - "  ++ (show bl_g) ++ ") + "
+            ++ "(BL_Blue - "  ++ (show bl_b) ++ ")*(BL_Blue - "   ++ (show bl_b) ++ ") + "
+            ++ "(BR_Red - "   ++ (show br_r) ++ ")*(BR_Red - "    ++ (show br_r) ++ ") + "
+            ++ "(BR_Green - " ++ (show br_g) ++ ")*(BR_Green - "  ++ (show br_g) ++ ") + "
+            ++ "(BR_Blue - "  ++ (show br_b) ++ ")*(BR_Blue - "   ++ (show br_b) ++ ")"
+            ++ ")AS Dist FROM Images"
+            -- ++ "Images WHERE rowid >= 2200 ORDER BY Dist DESC"
+            ) []
 
    disconnect conn
 
@@ -128,13 +249,14 @@ getClosestColor (PixelRGB8 r g b) = do
 
    return (fromSqlValues entry)
 
+allRows :: String -> IO [(Int, ImageRow)]
 allRows str = do
    conn <- connection
 
-   rows <- quickQuery' conn ("SELECT rowid,* FROM " ++ str) []
+   rows <- quickQuery' conn ("SELECT * FROM " ++ str) []
 
    disconnect conn
 
-   return rows
+   return $ map (\r  -> (fromSql (r !! 0),  fromSqlValues r)) rows
 
 
